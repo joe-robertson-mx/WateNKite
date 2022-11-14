@@ -1,33 +1,22 @@
 import React from 'react';
 import {List, Box, Divider} from '@mui/material';
 import WorkoutListItem from './WorkoutListItem';
+import { Workout } from '../../typings/DataModel';
 
-export default function WeightList () {
+interface WorkoutListProps {
+    workouts: Workout[];
+}
 
-    const WorkoutData = [
-        {
-            name: 'Big Chest Day',
-            date: new Date(),
-            id: 1
-        },
-        {
-            name: 'Big Back Day',
-            date: new Date(),
-            id: 2
-        },
-        {
-            name: 'Big Legs Day',  
-            date: new Date(),
-            id: 3
-        }
-    ]
+export default function WorkoutList ({workouts}: WorkoutListProps) {
+
+    console.dir (workouts);
 
     return (
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
         <List>
-            {WorkoutData.map((item) => (
-                <React.Fragment key={item.id}>
-                <WorkoutListItem name={item.name} date={item.date} />
+            {workouts.map((item) => (
+                <React.Fragment key={item._id!}>
+                <WorkoutListItem id={item._id!} name={item.name} date={item.date} />
                 <Divider />
                 </React.Fragment>
             ))}

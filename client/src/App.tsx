@@ -2,20 +2,21 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 import SetOverview from './pages/SetOverview';
-import SetEdit from './pages/SetEdit';
-import WorkoutEdit from './pages/WorkoutEdit';
+import SetNewEdit from './pages/SetNewEdit';
+import WorkoutNewEdit from './pages/WorkoutNewEdit';
 import WorkoutOverview from './pages/WorkoutOverview';
-import moment from 'moment';
 
 
 function App() {
   return (
     <div className="App">
       <Routes>
-       <Route path="/sets" element={<SetOverview />} />
-       <Route path="/setedit" element={<SetEdit weight={10} reps={10} type='Bench Press' />} />
+       <Route path="/setoverview/:workoutid" element={<SetOverview />} />
+       <Route path="/setedit/:workoutid/:setid" element={<SetNewEdit />} />
+       <Route path="/setedit/:workoutid" element={<SetNewEdit />} />
        <Route path="/" element={<WorkoutOverview />} />
-       <Route path="/workoutedit" element={<WorkoutEdit name='New Workout' date={moment()} />} />
+       <Route path="/workoutedit" element={<WorkoutNewEdit />} />
+        <Route path="/workoutedit/:workoutid" element={<WorkoutNewEdit />} />
      </Routes>
     </div>
   );
