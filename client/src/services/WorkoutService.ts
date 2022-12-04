@@ -1,7 +1,7 @@
 import {Workout, Set} from "../../typings/DataModel";
 
 
-const backendUrl = "http://localhost:5000";
+const backendUrl = "http://localhost:3001";
 
 export async function fetchAllWorkouts(): Promise<Workout[]| undefined> {
 
