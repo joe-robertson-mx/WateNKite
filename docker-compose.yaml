@@ -1,31 +1,10 @@
 services:
 
   nginx:
-    depends_on:
-      - server
-      - client
-    restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./nginx
-    ports:
-      - "3050:80"
+    image: joerob319/watenkite-nginx
 
   client:
-    stdin_open: true
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-    build:
-      dockerfile: Dockerfile
-      context: ./client
-    volumes:
-      - /app/node_modules
-      - ./client:/app
+    image: joerob319/watenkite-client
 
   server:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    volumes:
-      - /app/node_modules
-      - ./server:/app
+    image: joerob319/watenkite-server
